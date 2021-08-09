@@ -12,6 +12,7 @@ class DataManager:
         pass
 
     def retrieve_sheets(self):
+        """Retrieves the Google sheets via the API in JSON format"""
         response = requests.get(url=SHEETY_GET_API_KEY, headers=HEADER)
         return response.json()
 
