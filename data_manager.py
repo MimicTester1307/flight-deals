@@ -1,8 +1,13 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-SHEETY_GET_API_KEY = "https://api.sheety.co/5f7bebf51e96e73ce7d6cb184e070fd4/flightDeals/prices"
-SHEETY_POST_API_KEY = "https://api.sheety.co/5f7bebf51e96e73ce7d6cb184e070fd4/flightDeals/prices"
-HEADER = {"Authorization": "Bearer AF79wN!NAHb4&YR"}
+# Loading environment variables
+load_dotenv()
+
+SHEETY_GET_API_KEY = os.getenv("SHEETY_GET_API_KEY")
+SHEETY_POST_API_KEY = os.getenv("SHEETY_POST_API_KEY")
+HEADER = {"Authorization": f"Bearer {os.getenv('SHEETY_AUTH')}"}
 
 
 class DataManager:
