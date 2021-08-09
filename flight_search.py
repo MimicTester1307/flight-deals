@@ -21,16 +21,13 @@ class FlightSearch:
     def __init__(self, data: DataManager):
         self.data = data
 
-    def retrieve_iata(self):
-        sheet_data = self.data.retrieve_sheets()
-        cities = [city['city'] for city in sheet_data['prices']]
+    def retrieve_iata(self, city: str):
+        """Retrieves the IATA code for the given city"""
+        parameters = {
+            "term": f"{city}",
+            "location_types": "city"
+        }
+        response = requests.get(url=TEQUILA_LOCATION_ENDPOINT, json=parameters, headers=TEQUILA_HEADER).json()
+        iata_code = response["locations"][0]["code"]
 
-        for city in cities:
-            parameters = {
-                "term": f"{city}",
-                "location_types": "city"
-            }
-            response = requests.get(url=TEQUILA_LOCATION_ENDPOINT, json=parameters, headers=TEQUILA_HEADER).json()
-            iata_code = response["locations"][0]["code"]
-
-
+        return iata_code
