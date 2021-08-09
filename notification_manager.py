@@ -17,7 +17,8 @@ class NotificationManager:
         self.__client = Client(TWILIO_SID, TWILIO_AUTH)
 
     def send_notification(self, message: str):
-        """Notifies the given number about the flight details"""
+        """Notifies the given number about the flight details
+        :param message the message to be sent to the given number"""
         self.client.messages.create(
             body=message,
             from_=TWILIO_NUMBER,

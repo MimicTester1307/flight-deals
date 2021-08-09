@@ -23,7 +23,8 @@ class FlightSearch:
         self.data = data
 
     def retrieve_iata(self, city: str):
-        """Retrieves the IATA code for the given city"""
+        """Searches for and retrieves the IATA code for the given city
+        :param city the city to search for"""
         parameters = {
             "term": f"{city}",
             "location_types": "city"
@@ -34,7 +35,8 @@ class FlightSearch:
         return iata_code
 
     def find_cheapest_flight(self, city: str, min_price: float):
-        """Finds the cheapest flight to a particular City"""
+        """Finds the cheapest flight lesser than the given minimum price to a particular City
+        :param min_price the ceiling for the prices you want to search for"""
         minimum_price_data = None
         current_date = datetime.now()
         time_delta = timedelta(hours=4380)

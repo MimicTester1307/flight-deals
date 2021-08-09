@@ -4,6 +4,7 @@ class FlightData:
         self.flight_details = flight_details
 
     def format_flight_details(self):
+        """Formats the flight details and returns the formatted string"""
         price = self.flight_details["price"]
         from_location = f"{self.flight_details['cityFrom']}-{self.flight_details['flyFrom']}"
         to_location = f"{self.flight_details['cityTo']}-{self.flight_details['flyTo']}"
