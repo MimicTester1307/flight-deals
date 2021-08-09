@@ -21,7 +21,12 @@ class DataManager:
         response = requests.get(url=SHEETY_GET_API_KEY, headers=HEADER)
         return response.json()
 
+    def update_iata(self, row_number: int, data: str):
+        SHEETY_PUT_API = f"https://api.sheety.co/5f7bebf51e96e73ce7d6cb184e070fd4/flightDeals/prices/{row_number}"
+        parameters = {
+            "price": {
+                "iataCode": data,
+            }
+        }
+        requests.put(url=SHEETY_PUT_API, json=parameters, headers=HEADER)
 
-    # def update_row(self):
-    #     SHEETY_PUT_API = "https://api.sheety.co/5f7bebf51e96e73ce7d6cb184e070fd4/flightDeals/prices/[Object ID]"
-    #
