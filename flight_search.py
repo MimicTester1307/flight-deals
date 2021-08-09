@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 from data_manager import DataManager
 import os
 from dotenv import load_dotenv
@@ -7,8 +7,7 @@ from dotenv import load_dotenv
 # Loading environment variables
 load_dotenv()
 
-
-TEQUILA_SEARCH_ENDPOINT = "tequila-api.kiwi.com/v2/search"
+TEQUILA_SEARCH_ENDPOINT = "https://tequila-api.kiwi.com/v2/search"
 TEQUILA_API_KEY = os.getenv("TEQUILA_API_KEY")
 TEQUILA_LOCATION_ENDPOINT = "https://tequila-api.kiwi.com/locations/query"
 TEQUILA_HEADER = {
@@ -16,6 +15,7 @@ TEQUILA_HEADER = {
 }
 
 CURRENT_CITY = "ACC,GH"
+
 
 class FlightSearch:
     # This class is responsible for talking to the Flight Search API.
@@ -36,7 +36,8 @@ class FlightSearch:
 
     def find_cheapest_flight(self, city: str, min_price: float):
         """Finds the cheapest flight lesser than the given minimum price to a particular City
-        :param min_price the ceiling for the prices you want to search for"""
+        :param min_price the ceiling for the prices you want to search for
+        :param city the city you want to fly to"""
         minimum_price_data = None
         current_date = datetime.now()
         time_delta = timedelta(hours=4380)
