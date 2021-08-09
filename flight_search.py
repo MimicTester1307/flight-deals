@@ -44,7 +44,8 @@ class FlightSearch:
             "fly_to": city,
             "date_from": current_date.strftime("%d/%m/%Y"),
             "date_to": next_six_months,
-            "flight_type": "round"
+            "flight_type": "round",
+            "curr": "USD"
         }
         responses = requests.get(url=TEQUILA_SEARCH_ENDPOINT, params=parameters, headers=TEQUILA_HEADER).json()
         for response in responses["data"]:
