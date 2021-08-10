@@ -7,6 +7,7 @@ load_dotenv()
 
 SHEETY_GET_API_KEY = os.getenv("SHEETY_GET_API_KEY")
 SHEETY_POST_API_KEY = os.getenv("SHEETY_POST_API_KEY")
+SHEETY_PUT_API = os.getenv("SHEETY_PUT_API")
 HEADER = {"Authorization": f"Bearer {os.getenv('SHEETY_AUTH')}"}
 
 
@@ -25,11 +26,10 @@ class DataManager:
         """Updates the IATA code in each row
         :param row_number object_id representing which row is to be updated
         :param data the data to update the row with"""
-        SHEETY_PUT_API = f"https://api.sheety.co/5f7bebf51e96e73ce7d6cb184e070fd4/flightDeals/prices/{row_number}"
         parameters = {
             "price": {
                 "iataCode": data,
             }
         }
-        requests.put(url=SHEETY_PUT_API, json=parameters, headers=HEADER)
+        requests.put(url=f"{SHEETY_PUT_API}/{row_number}", json=parameters, headers=HEADER)
 
