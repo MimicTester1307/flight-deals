@@ -34,8 +34,8 @@ class FlightSearch:
             iata_code = response["locations"][0]["code"]
         except IndexError:
             print("Location code not found.")
-
-        return iata_code
+        else:
+            return iata_code
 
     def find_cheapest_flight(self, city: str, min_price: float):
         """Finds the cheapest flight lesser than the given minimum price to a particular City
@@ -51,7 +51,9 @@ class FlightSearch:
             "date_from": current_date.strftime("%d/%m/%Y"),
             "date_to": next_six_months,
             "flight_type": "round",
-            "curr": "USD"
+            "curr": "USD",
+            "max_stopovers": 0,
+            "one_for_city": 1
         }
         responses = requests.get(url=TEQUILA_SEARCH_ENDPOINT, params=parameters, headers=TEQUILA_HEADER).json()
         for response in responses["data"]:
