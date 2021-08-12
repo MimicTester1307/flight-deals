@@ -30,7 +30,10 @@ class FlightSearch:
             "location_types": "city"
         }
         response = requests.get(url=TEQUILA_LOCATION_ENDPOINT, params=parameters, headers=TEQUILA_HEADER).json()
-        iata_code = response["locations"][0]["code"]
+        try:
+            iata_code = response["locations"][0]["code"]
+        except IndexError:
+            print("Location code not found.")
 
         return iata_code
 
