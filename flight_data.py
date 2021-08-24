@@ -9,5 +9,5 @@ class FlightData:
         from_location = f"{self.flight_details['cityFrom']}-{self.flight_details['flyFrom']}"
         to_location = f"{self.flight_details['cityTo']}-{self.flight_details['flyTo']}"
 
-        formatted_message = f"Low price alert! Only ${price} ro fly from {from_location} to {to_location}"
+        formatted_message = f"Low price alert! Only ${price} to fly from {from_location} to {to_location}"
         return formatted_message
