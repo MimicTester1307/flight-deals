@@ -1,4 +1,4 @@
-This is a simple code interface for finding cheap flights. The code searches through a Google Sheet containing cities of interest, their International Air Transport Association (IATA) codes, and specified prices. 
+This is a simple commandline interface for finding cheap flights. The code searches through a Google Sheet containing cities of interest, their International Air Transport Association (IATA) codes, and specified prices. 
 It then uses the IATA codes to search for cheap flights and notifies you via SMS if any is found. It makes use of four main APIs:
 
 - The Sheety API that turns the Google Sheet into a REST API.
